@@ -1,0 +1,23 @@
+<violations>
+    <violation>
+        <date_time>"2022-02-02 15:39:03"</date_time>
+        <first_name>Anton</first_name>
+        <last_name>Delacrua</last_name>
+        <type>RED LIGHT</type>
+        <fine_amount>5540.00</fine_amount>
+    </violation>
+    <violation>
+        <date_time>"2022-02-02 15:39:03"</date_time>
+        <first_name>Elon</first_name>
+        <last_name>Musk</last_name>
+        <type>OFFENSIVE BEHAVIOR</type>
+        <fine_amount>1200.00</fine_amount>
+    </violation>
+    <violation>
+        <date_time>"2022-02-02 15:39:03"</date_time>
+        <first_name>Ivan</first_name>
+        <last_name>Artemov</last_name>
+        <type>RED LIGHT</type>
+        <fine_amount>1340.00</fine_amount>
+    </violation>
+</violations>

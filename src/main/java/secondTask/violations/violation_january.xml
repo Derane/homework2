@@ -1,0 +1,23 @@
+<violations>
+    <violation>
+        <date_time>2022-01-01 16:39:03</date_time>
+        <first_name>Artem</first_name>
+        <last_name>Artem</last_name>
+        <type>SPEEDING</type>
+        <fine_amount>355.00</fine_amount>
+    </violation>
+    <violation>
+        <date_time>2022-01-02 16: 58:13</date_time>
+        <first_name>Oleksandr</first_name>
+        <last_name>Ivanov</last_name>
+        <type>PARKING</type>
+        <fine_amount>540.00</fine_amount>
+    </violation>
+    <violation>
+        <date_time>2020-01-02 16: 40:33</date_time>
+        <first_name>Valerii</first_name>
+        <last_name>Sierhieiev</last_name>
+        <type>SPEEDING</type>
+        <fine_amount>456.00</fine_amount>
+    </violation>
+</violations>
