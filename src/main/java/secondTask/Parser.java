@@ -1,6 +1,6 @@
 package secondTask;
 
-import org.json.simple.JSONObject;
+import org.json.JSONWriter;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -28,7 +28,6 @@ public class Parser {
 	private static void parseXMLViolationIntoJSONAndWrite()
 			throws ParserConfigurationException, SAXException, IOException {
 		File violationsInputDirectory = new File(VIOLATIONS_INPUT_DIRECTORY);
-
 		SAXParserFactory parserFactory = SAXParserFactory.newInstance();
 		SAXParser parser = parserFactory.newSAXParser();
 		SAXHandler handler = new SAXHandler();
@@ -36,23 +35,29 @@ public class Parser {
 		Optional<File[]> optionalFiles = Optional.ofNullable(violationsInputDirectory.listFiles());
 		parseXmlAndFillMap(parser, handler, violationsMap, optionalFiles);
 
-		final JSONObject violationsDetail = new JSONObject();
 		var sortedMapOfViolations = violationsMap.entrySet()
 				.stream()
 				.sorted(comparingByValue(reverseOrder()))
 				.collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
 
-		writeInJSON(violationsDetail, sortedMapOfViolations);
+		writeInJSON(sortedMapOfViolations);
 	}
 
-	private static void writeInJSON(JSONObject violationsDetail, LinkedHashMap<String, Double> map) throws IOException {
+	private static void writeInJSON(LinkedHashMap<String, Double> map) throws IOException {
 		try (FileWriter file = new FileWriter("src/main/java/secondTask/summary.json")) {
-			for (Map.Entry pair : map.entrySet()) {
-				violationsDetail.put(pair.getKey(), pair.getValue());
-				file.write(violationsDetail.toJSONString());
-				file.write(", \n");
-				violationsDetail.clear();
-			}
+			map.forEach((key, value) -> {
+				new JSONWriter(file)
+						.object()
+						.key(key)
+						.value(value)
+						.endObject();
+				try {
+					file.write("\n");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+			});
 			file.flush();
 		}
 	}
