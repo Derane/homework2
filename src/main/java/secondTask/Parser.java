@@ -47,8 +47,8 @@ public class Parser {
 
 	private static void writeInJSON(JSONObject violationsDetail, LinkedHashMap<String, Double> map) throws IOException {
 		try (FileWriter file = new FileWriter("src/main/java/secondTask/summary.json")) {
-			for (Map.Entry c : map.entrySet()) {
-				violationsDetail.put(c.getKey(), c.getValue());
+			for (Map.Entry pair : map.entrySet()) {
+				violationsDetail.put(pair.getKey(), pair.getValue());
 				file.write(violationsDetail.toJSONString());
 				file.write(", \n");
 				violationsDetail.clear();
